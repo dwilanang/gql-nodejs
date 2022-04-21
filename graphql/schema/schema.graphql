@@ -1,0 +1,26 @@
+type Page {
+    identity: String!
+    name: String!
+}
+
+input PageRequest {
+    identity: String!
+    name: String!
+}
+
+type GetPageResponse {
+    items: [Page]!
+}
+
+type AddPageResponse {
+    message: String!
+}
+
+type Query {
+    hello: String!
+    fetchPage: GetPageResponse!
+}
+
+type Mutation {
+   addPage(params: PageRequest!): AddPageResponse!
+}

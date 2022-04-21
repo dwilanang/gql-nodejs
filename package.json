@@ -1,0 +1,24 @@
+{
+  "name": "dxlbuilder",
+  "version": "1.0.0",
+  "description": "Apps builder service",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "app": "nodemon app.js"
+  },
+  "author": "dwilanang",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.6.7",
+    "apollo-server-core": "^3.6.7",
+    "apollo-server-express": "^3.6.7",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "graphql": "^16.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash.merge": "^4.6.2",
+    "nodemon": "^2.0.15",
+    "npm": "^8.7.0"
+  }
+}
