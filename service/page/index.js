@@ -1,17 +1,41 @@
-const pageItems = [{ identity: '1', name: 'testing' }];
+const { Message } = require('../../utils');
+const { Page } = require('../../models');
 
 const resolverPage = {
     fetchPage: async (_, context) => {
      
-        var ctx = await context
+        // const ctx = await context
 
-        console.log("context > service > ", ctx.uid)
+        // console.log("context > service > ", ctx.uid) 
+        var items = [];
 
-        return { items: pageItems };
+        const pages = await Page.find()
+
+        pages.forEach(function(page) {
+            items.push({
+                identity: page.identity,
+                name: page.name,
+            });
+        });
+
+        return { items: items };
     },
-    addPage: (args, context) => {
-        console.log("testing > ", args)
-        return { message: "testing" };
+    addPage: async (args, context) => {
+        const ctx = await context
+
+        // console.log("context > service > ", ctx.uid)
+
+        const page = new Page({
+            identity: args.params.identity,
+            name: args.params.name,
+        })
+        
+        var message = Message.Success
+        const res = await page.save()
+        if (res._id == "") {
+            message = Message.Fail
+        }
+        return { message: message };
     }
 };
 

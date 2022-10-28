@@ -18,7 +18,7 @@
     "graphql-playground-middleware-express": "^1.7.23",
     "jsonwebtoken": "^8.5.1",
     "lodash.merge": "^4.6.2",
-    "mongoose": "^6.6.5",
+    "mongoose": "^6.7.0",
     "nodemon": "^2.0.15",
     "npm": "^8.7.0"
   }
