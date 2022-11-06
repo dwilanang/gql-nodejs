@@ -3,12 +3,12 @@ To contribute to this project you need to prepare this requirement in your envir
 
 * [DOCKER](https://www.docker.com/) 
 * [NODEJS](https://nodejs.org/en/)
-* [GQL](https://graphql.org/)
+* [GRAPHQL](https://graphql.org/)
 * [MONGODB](https://www.mongodb.com/)
 
 # How to run
 
-This command will help you to set up everything you need before development. After that, you can run this command to start the services:
+Run this command to start the service:
 
 ```
 make service-up
