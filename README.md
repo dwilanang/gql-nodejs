@@ -1,5 +1,4 @@
 # Docker | Nodejs | GraphQL | MongoDB
-To contribute to this project you need to prepare this requirement in your environment.
 
 * [DOCKER](https://www.docker.com/) 
 * [NODEJS](https://nodejs.org/en/)
