@@ -4,9 +4,10 @@ const { Page } = require('../../models');
 const servicePage = {
     fetchPage: async (_, context) => {
      
-        // const ctx = await context
+        const ctx = await context
 
-        // console.log("context > service > ", ctx.uid) 
+        console.log("context > service > uid > ", ctx.uid) 
+
         var items = [];
 
         const pages = await Page.find()
@@ -23,7 +24,7 @@ const servicePage = {
     addPage: async (args, context) => {
         const ctx = await context
 
-        // console.log("context > service > ", ctx.uid)
+        console.log("context > service > uid > ", ctx.uid)
 
         const page = new Page({
             identity: args.params.identity,
