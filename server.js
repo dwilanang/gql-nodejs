@@ -38,10 +38,6 @@ const schema = require('./graphql/schema');
 // The root provides a resolver function for each API endpoint
 const resolvers = require('./graphql/resolver');
 
-const { connectDB } = require('./repository');
-
-connectDB();
-
 const context = async req => {
   const user = req.user;
   
