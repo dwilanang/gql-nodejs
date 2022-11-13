@@ -1,39 +1,21 @@
 const { Message } = require('../../utils');
-const { Page } = require('../../models');
+const { PageRepo } = require('../../repository');
 
 const servicePage = {
     fetchPage: async (_, context) => {
-     
         const ctx = await context
 
-        console.log("context > service > uid > ", ctx.uid) 
-
-        var items = [];
-
-        const pages = await Page.find()
-
-        pages.forEach(function(page) {
-            items.push({
-                identity: page.identity,
-                name: page.name,
-            });
-        });
+        var items = PageRepo.fetch(ctx);
 
         return { items: items };
     },
     addPage: async (args, context) => {
         const ctx = await context
 
-        console.log("context > service > uid > ", ctx.uid)
-
-        const page = new Page({
-            identity: args.params.identity,
-            name: args.params.name,
-        })
-        
         var message = Message.Success
-        const res = await page.save()
-        if (res._id == "") {
+        var res = await PageRepo.add(ctx, args)
+
+        if (res == null || typeof(res) == "undefined") {
             message = Message.Fail
         }
         return { message: message };
