@@ -5,11 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "app": "nodemon app.js"
+    "app": "nodemon app.js",
+    "debug": "nodemon --inspect=0.0.0.0:9229 server.js"
   },
   "author": "dwilanang",
   "license": "ISC",
-  "debug": "nodemon --inspect=0.0.0.0:9229 server.js",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",

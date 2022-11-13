@@ -22,7 +22,7 @@ const { createJwtToken, authenticate } = require(path.join(middlewarePath, "auth
 app.get('/auth', (req, res)=>{
   let data = {
     time: Date(),
-    userId: 2,
+    userId: 12345,
   }
   const token =  createJwtToken(data);
 
@@ -38,7 +38,7 @@ const schema = require('./graphql/schema');
 // The root provides a resolver function for each API endpoint
 const resolvers = require('./graphql/resolver');
 
-const { connectDB } = require('./repository');
+const connectDB = require('./repository/db');
 
 connectDB();
 
