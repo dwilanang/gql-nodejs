@@ -1,9 +1,38 @@
-# Start Project
-## npm install
-## npm start
+# Docker | Nodejs | GraphQL | MongoDB
 
-## http://localhost:4000
-## Authorization Bearer
+* [DOCKER](https://www.docker.com/) 
+* [NODEJS](https://nodejs.org/en/)
+* [GRAPHQL](https://graphql.org/)
+* [MONGODB](https://www.mongodb.com/)
 
-# Auth Test
-## http://localhost:4000/auth
+# How to run
+
+Run this command to start the service:
+
+```
+make service-up
+```
+
+To shut down & remove images & container docker, run this command:
+
+```
+make service-down
+```
+
+# Project Structure
+
+```
+Project
+├── graphql
+|   └── ...
+├── middleware
+│   └── ...
+├── models
+│   └── ...
+├── repository
+|   └── ...
+└── service
+|    └── ...
+└── utils
+    └── ...
+```
