@@ -1,9 +1,34 @@
-# Start Project
-## npm install
-## npm start
+# Nodejs | GraphQL
 
-## http://localhost:4000
-## Authorization Bearer
+* [NODEJS](https://nodejs.org/en/)
+* [GRAPHQL](https://graphql.org/)
 
-# Auth Test
-## http://localhost:4000/auth
+# How to run
+
+Run this command to start the service:
+
+```
+npm install
+```
+
+```
+npm start
+```
+
+# Project Structure
+
+```
+Project
+├── graphql
+|   └── ...
+├── middleware
+│   └── ...
+├── models
+│   └── ...
+├── repository
+|   └── ...
+└── service
+|    └── ...
+└── utils
+    └── ...
+```
