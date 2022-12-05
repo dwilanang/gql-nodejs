@@ -20,12 +20,6 @@ if ! test -f "$FILE_PRE_COMMIT"; then
     cp ./.github/pre-commit.sh $FILE_PRE_COMMIT
 fi
 
-FILE_PRE_PUSH=./.git/hooks/pre-push
-if ! test -f "$FILE_PRE_PUSH"; then
-    chmod +x ./.github/pre-push.sh
-    cp ./.github/pre-push.sh $FILE_PRE_PUSH
-fi
-
 echo "GIT hooks [OK]"
 
 echo "run command \"make service up\" start service"
