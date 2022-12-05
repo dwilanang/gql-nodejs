@@ -2,9 +2,11 @@ init:
 	@.local/init.sh
 
 lint:
-	@which eslint 2> /dev/null || npm install eslint --save-dev
+ifeq ($(wildcard ./node_modules/.bin/eslint),)
+	@npm install eslint --save-dev
+endif
 	@npm run lint
-
+	
 service-up:
 	@docker-compose -f docker-compose.yml up --build
 

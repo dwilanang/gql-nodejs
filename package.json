@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "app": "nodemon app.js",
     "debug": "nodemon --inspect=0.0.0.0:9229 server.js",
     "lint": "eslint ."
   },

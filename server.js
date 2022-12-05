@@ -42,7 +42,7 @@ const context = async req => {
   return { uid: user.id }
 }
 
-app.use('/query', graphqlHTTP( (req, res, test) => {
+app.use('/query', graphqlHTTP( req => {
   return {
     schema,
     rootValue: resolvers,

@@ -28,4 +28,5 @@ const authenticate = async (req, res, next) => {
       expiresIn: process.env.JWT_EXPIRES_IN,
     })
   }
+  
   module.exports = { createJwtToken, authenticate }
