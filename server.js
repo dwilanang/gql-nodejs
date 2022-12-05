@@ -42,7 +42,7 @@ const context = async req => {
   return { uid: user.id }
 }
 
-app.use('/query', graphqlHTTP( req => {
+app.use('/query', graphqlHTTP( (req, res, test) => {
   return {
     schema,
     rootValue: resolvers,
@@ -54,4 +54,9 @@ app.use('/query', graphqlHTTP( req => {
 app.listen(port)
 console.log(`Server started on port ${port}`)
 
+console.log('Press any key to stop')
+
+process.stdin.setRawMode(true);
+process.stdin.resume();
+process.stdin.on('data', process.exit.bind(process, 0));
 // --legacy-peer-deps

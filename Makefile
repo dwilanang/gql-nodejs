@@ -2,7 +2,7 @@ init:
 	@.local/init.sh
 
 lint:
-	@which eslint 2> /dev/null || echo "please install eslint : npm install eslint --save-dev"
+	@which eslint 2> /dev/null || npm install eslint --save-dev
 	@npm run lint
 
 service-up:
