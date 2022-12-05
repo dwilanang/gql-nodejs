@@ -1,7 +1,8 @@
 const { PageModel } = require('../models');
 
 const repoPage = {
-    fetch: async (ctx) => {
+    fetch: async (context) => {
+        const ctx = await context
         var items = [];
         
         const pages = await PageModel.find({ userid: ctx.uid })
@@ -15,7 +16,8 @@ const repoPage = {
     
         return items
     },
-    add: async (ctx, args) => {
+    add: async (context, args) => {
+        const ctx = await context
         try {
             var input = {
                 userid: ctx.uid,

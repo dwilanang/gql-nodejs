@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "app": "nodemon app.js",
-    "debug": "nodemon --inspect=0.0.0.0:9229 server.js"
+    "debug": "nodemon --inspect=0.0.0.0:9229 server.js",
+    "lint": "eslint ."
   },
   "author": "dwilanang",
   "license": "ISC",
@@ -22,5 +23,13 @@
     "mongoose": "^6.7.0",
     "nodemon": "^2.0.20",
     "npm": "^8.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.11"
   }
 }

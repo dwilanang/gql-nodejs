@@ -3,17 +3,13 @@ const { PageRepo } = require('../../repository');
 
 const servicePage = {
     fetchPage: async (_, context) => {
-        const ctx = await context
-
-        var items = PageRepo.fetch(ctx);
+        var items = PageRepo.fetch(context);
 
         return { items: items };
     },
     addPage: async (args, context) => {
-        const ctx = await context
-
         var message = Message.Success
-        var res = await PageRepo.add(ctx, args)
+        var res = await PageRepo.add(context, args)
 
         if (res == null || typeof(res) == "undefined") {
             message = Message.Fail

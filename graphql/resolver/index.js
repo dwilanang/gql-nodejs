@@ -6,7 +6,6 @@ const service = path.resolve('./service');
 const pageServiceResolver = require(path.join(service, 'page'));
 
 const resolver =  merge(
-    {},
     pageServiceResolver
 );
 

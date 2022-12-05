@@ -13,10 +13,10 @@ COPY package*.json /usr/service/
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
-
+RUN npm install -g nodemon
 # Bundle app source
 COPY . .
 
 # EXPOSE 4000
 
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]

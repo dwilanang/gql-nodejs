@@ -1,63 +1,62 @@
-const path = require('path');
-const express = require('express');
+const path = require('path')
+const express = require('express')
 // const cors = require('cors');
-const { graphqlHTTP } = require('express-graphql');
-const expressPlayground = require('graphql-playground-middleware-express').default;
+const { graphqlHTTP } = require('express-graphql')
+// const expressPlayground = require('graphql-playground-middleware-express').default;
 
-const dotenv = require('dotenv');
+const dotenv = require('dotenv')
 
-dotenv.config();
+dotenv.config()
 
 const port = process.env.PORT
 
-var app = express();
+const app = express()
 
 // Cors
 // app.use(cors());
 
 // Middleware
-const middlewarePath = path.resolve('./middleware');
-const { createJwtToken, authenticate } = require(path.join(middlewarePath, "auth"));
+const middlewarePath = path.resolve('./middleware')
+const { createJwtToken, authenticate } = require(path.join(middlewarePath, 'auth'))
 
-app.get('/auth', (req, res)=>{
-  let data = {
+app.get('/auth', (req, res) => {
+  const data = {
     time: Date(),
-    userId: 12345,
+    userId: 12345
   }
-  const token =  createJwtToken(data);
+  const token = createJwtToken(data)
+  
+  res.json({ token })
+})
 
-  res.json({token: token}) 
-});
-
-app.use(authenticate);
+app.use(authenticate)
 
 // GraphQL
 // Construct a schema, using GraphQL schema language
-const schema = require('./graphql/schema');
+const schema = require('./graphql/schema')
 
 // The root provides a resolver function for each API endpoint
-const resolvers = require('./graphql/resolver');
+const resolvers = require('./graphql/resolver')
 
-const connectDB = require('./repository/db');
+const connectDB = require('./repository/db')
 
-connectDB();
+connectDB()
 
 const context = async req => {
-  const user = req.user;
-  
-  return { uid: user.id };
-};
+  const user = req.user
+  return { uid: user.id }
+}
 
-app.use('/query', graphqlHTTP((req, res, graphQLParams) => {
+app.use('/query', graphqlHTTP( req => {
   return {
-      schema: schema,
-      rootValue: resolvers,
-      context: context(req)
-    };
-}));
+    schema,
+    rootValue: resolvers,
+    context: context(req)
+  }
+}))
 
-app.get('/playground', expressPlayground({ endpoint: '/query' }));
-app.listen(port);
-console.log(`Server started on port ${port}`);
+// app.get('/playground', expressPlayground({ endpoint: '/query' }));
+app.listen(port)
+console.log(`Server started on port ${port}`)
 
 // --legacy-peer-deps
