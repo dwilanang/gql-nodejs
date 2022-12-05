@@ -1,8 +1,6 @@
 const path = require('path')
 const express = require('express')
-// const cors = require('cors');
 const { graphqlHTTP } = require('express-graphql')
-// const expressPlayground = require('graphql-playground-middleware-express').default;
 
 const dotenv = require('dotenv')
 
@@ -11,9 +9,6 @@ dotenv.config()
 const port = process.env.PORT
 
 const app = express()
-
-// Cors
-// app.use(cors());
 
 // Middleware
 const middlewarePath = path.resolve('./middleware')
