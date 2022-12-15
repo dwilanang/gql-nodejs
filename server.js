@@ -1,7 +1,6 @@
-const path = require('path')
 const express = require('express')
 const { graphqlHTTP } = require('express-graphql')
-
+const expressPlayground = require('graphql-playground-middleware-express').default
 const dotenv = require('dotenv')
 
 dotenv.config()
@@ -11,8 +10,7 @@ const port = process.env.PORT
 const app = express()
 
 // Middleware
-const middlewarePath = path.resolve('./middleware')
-const { createJwtToken, authenticate } = require(path.join(middlewarePath, 'auth'))
+const { createJwtToken, authenticate } = require('./middleware')
 
 app.get('/auth', (req, res) => {
   const data = {
@@ -23,6 +21,8 @@ app.get('/auth', (req, res) => {
   
   res.json({ token })
 })
+
+app.get('/playground', expressPlayground({ endpoint: '/query' }));
 
 app.use(authenticate)
 
@@ -50,7 +50,7 @@ app.use('/query', graphqlHTTP( req => {
   }
 }))
 
-// app.get('/playground', expressPlayground({ endpoint: '/query' }));
+
 app.listen(port)
 console.log(`Server started on port ${port}`)
 // --legacy-peer-deps

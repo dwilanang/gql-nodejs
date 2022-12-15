@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+   gql:
+      build:
+         context: .
+      container_name: [NAME CONTAINER]
+      ports:
+         - 4000:4000
+         - 9229:9229
+      environment:
+         - SERVER_PORT=4000
+      volumes:
+         - .:/usr/service
+         - /usr/service/node_modules
+      networks:
+         - local
+      depends_on: 
+         - mongo
+      # command: npm run debug
+   mongo:
+      container_name: [NAME MONGO SERVICE]
+      image: mongo:4.2.8
+      ports:
+         - 27017:27017
+      volumes:
+         - mongodb:/data/db
+         - mongodb_config:/data/configdb
+      networks:
+         - local
+volumes:
+   mongodb:
+   mongodb_config:
+networks:
+   local:
+      driver: bridge

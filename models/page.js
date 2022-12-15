@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const pageSchema = new mongoose.Schema(
     {
-      userid: {
+      uid: {
         type: Number,
         required: true,
       },

@@ -1,4 +1,5 @@
 type Page {
+    id: String!
     identity: String!
     name: String!
 }
@@ -8,8 +9,12 @@ input PageRequest {
     name: String!
 }
 
-type GetPageResponse {
-    items: [Page]!
+type FetchPageResponse {
+    result: [Page]!
+}
+
+type FindPageResponse {
+    result: Page!
 }
 
 type AddPageResponse {
@@ -17,8 +22,8 @@ type AddPageResponse {
 }
 
 type Query {
-    hello: String!
-    fetchPage: GetPageResponse!
+    fetchPage: FetchPageResponse!
+    findPage(id: String!): FindPageResponse!
 }
 
 type Mutation {

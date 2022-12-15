@@ -13,6 +13,14 @@ then
 fi
 echo "eslint [OK]"
 
+echo "check available jest"
+if ! command -v ./node_modules/.bin/jest &> /dev/null
+then
+    echo "install jest"
+    npm install jest --save-dev
+fi
+echo "jest [OK]"
+
 echo "init GIT hooks"
 FILE_PRE_COMMIT=./.git/hooks/pre-commit
 if ! test -f "$FILE_PRE_COMMIT"; then

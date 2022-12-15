@@ -1,11 +1,16 @@
 const jwt = require('jsonwebtoken');
 
 const authenticate = async (req, res, next) => {
-    const token = req.headers.authorization?.split(" ")[1] || ""
-
     var user = {
         id: 0
     };
+    // console.log(req.url)
+    // if(req.url == '/playground' && req.url == '/favicon.ico') {
+    //     req.user = user;
+    //     next();
+    // }
+
+    const token = req.headers.authorization?.split(" ")[1] || ""
 
     try {
         const verified = jwt.verify(token, process.env.JWT_SECRET);
@@ -21,12 +26,12 @@ const authenticate = async (req, res, next) => {
     } catch (error) {
         res.status(401).json({message: "You are not authenticated"});
     }
-  }
+}
   
-  const createJwtToken = (data) => {
+const createJwtToken = (data) => {
     return jwt.sign(data, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRES_IN,
+        expiresIn: process.env.JWT_EXPIRES_IN,
     })
-  }
+}
   
-  module.exports = { createJwtToken, authenticate }
+module.exports = { createJwtToken, authenticate }
