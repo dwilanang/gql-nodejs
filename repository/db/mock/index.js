@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const { MongoMemoryServer } = require("mongodb-memory-server");
 mongoose.set('strictQuery', false);
+
+const { MongoMemoryServer } = require("mongodb-memory-server");
 module.exports = {
     connect: async () => {
         const mongod = await MongoMemoryServer.create();

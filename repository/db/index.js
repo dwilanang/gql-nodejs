@@ -5,7 +5,7 @@ const connectDB = async () => {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
-    
+    mongoose.set('strictQuery', false);
     // Get the default connection
     const db = mongoose.connection;
     db.on("error", console.error.bind(console, "MongoDB connection error:"));

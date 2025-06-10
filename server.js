@@ -2,12 +2,16 @@ const express = require('express')
 const { graphqlHTTP } = require('express-graphql')
 const expressPlayground = require('graphql-playground-middleware-express').default
 const dotenv = require('dotenv')
+const cors = require('cors');
 
 dotenv.config()
 
 const port = process.env.PORT
 
 const app = express()
+
+// Cors
+app.use(cors());
 
 // Middleware
 const { createJwtToken, authenticate } = require('./middleware')
